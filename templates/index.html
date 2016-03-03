@@ -1,0 +1,18 @@
+ <!--extends from mb.index as template      -->
+ {% extends 'mb.html' %} 
+<!--overwrite content-block from matherboard  -->
+{% block content-block %}            
+fdsfgdgdfgdf
+gfdhgfdfd
+<hr>
+{{ content  }}
+<table border="1">
+{% for k,v in info.items %}
+    {% if k == 'age' %}
+    <th>{{ v|add:'-10' }}</th>             {# add 10 years #}
+    {% else %}
+    <th>{{ v }}</th>
+ {% endif %}
+{% endfor %}
+</table>
+{% endblock %}
