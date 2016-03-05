@@ -1,9 +1,22 @@
 {% extends 'bootstrap.html' %}
-
+{% load debugtools_tags %}
 {% block left %}
     host
 {% endblock left %}
 
 {% block right %}
     host  {{ request.path }}
+  {% if debug == True %}
+  {% print request.user  %}        <!-- from debugtools plugin-->
+  {% endif %}
+    {% for group in request.user.userprofile.host_group.select_related %}
+        <li>{{ group}}</li>
+        <ul>
+            {% for host in group.host_set.select_related %}
+                <li>
+                     {{ host.hostname }} -----{{ host.ip_addr }}------{{ host.idc }}
+                </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
 {% endblock right %}
