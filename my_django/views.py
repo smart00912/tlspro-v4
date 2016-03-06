@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect
 from django.template import Context
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 
@@ -60,7 +61,7 @@ def acc_login(request):
 			if user is not None:
 				if user.is_active:
 					login(request,user)
-					return HttpResponseRedirect('/dashboard/')
+					return HttpResponseRedirect(reverse('my_django:dashboard'))
 				else:
 					errors.append('Account disabled')
 			else:

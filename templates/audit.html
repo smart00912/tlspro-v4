@@ -1,4 +1,5 @@
 {% extends 'bootstrap.html' %}
+{% load debugtools_tags %}
 
 {% block left %}
     audit
@@ -6,4 +7,6 @@
 
 {% block right %}
     audit  {{ request.path }}
+    {% print request.user %}
+    {% print request.user.userprofile %}
 {% endblock right %}

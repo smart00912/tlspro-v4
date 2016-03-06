@@ -49,10 +49,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
               <!-- 调用url别名动态赋值 -->
-            <li><a href="{% url 'asset' %}">资产</a></li>
-            <li><a href="{% url 'host' %}">主机</a></li>
-            <li><a href="{% url 'audit' %}">审计</a></li>
-            <li><a href="{% url 'user' %}">用户</a></li>
+            <li><a href="{% url 'my_django:asset' %}">资产</a></li>
+            <li><a href="{% url 'my_django:host' %}">主机</a></li>
+            <li><a href="{% url 'my_django:audit' %}">审计</a></li>
+            <li><a href="{% url 'my_django:user' %}">用户</a></li>
           </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
