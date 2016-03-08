@@ -20,44 +20,44 @@ def index(q):
 	return render_to_response('index.html',{'content':'string from views','info':info})
 
 
-@login_required(login_url='/',redirect_field_name='fuck')
+@login_required(login_url="/yunwei/",redirect_field_name='login')
 def bootstrap(q):
 	return render(q,'bootstrap.html',{'debug':False})
 
-@login_required(login_url='/',redirect_field_name='fuck')
+@login_required(login_url="/yunwei/",redirect_field_name='login')
 def asset(q):
 	return render(q,'asset.html',{'debug':False})
 
-@login_required(login_url='/',redirect_field_name='fuck')
+@login_required(login_url="/yunwei/",redirect_field_name='login')
 def host(request):
 	#print q.path
 	return render(request,'host.html',{'debug':False})
 
-@login_required(login_url='/',redirect_field_name='fuck')
+@login_required(login_url="/yunwei/",redirect_field_name='login')
 def audit(q):
 	return render(q,'audit.html',{'debug':False})
 
-@login_required(login_url='/',redirect_field_name='fuck')
+@login_required(login_url='/yunwei/',redirect_field_name='login',)
 def user(q):
 	return render(q, 'host.html',{'debug':False})
 
 
 def acc_login(request):
 	errors=[]
-	email=None
-	password=None
+	post_u=None
+	post_p=None
 	if  request.method=="POST":
-		if not request.POST.get('email'):
-			errors.append('Please Enter email')
+		if not request.POST.get('u'):
+			errors.append('Please Enter username')
 		else:
-			email = request.POST.get('email')
-		if not request.POST.get('password'):
+			post_u= request.POST.get('u')
+		if not request.POST.get('p'):
 			errors.append('can not be empty password')
 		else:
-			password=request.POST.get('password')
-		if email is not None and password is not None:
-			acc_user=email.split('@')[0]
-			user=authenticate(username=acc_user,password=password)              #take first part from email as username
+			post_p=request.POST.get('p')
+		if post_u is not None and post_p is not None:
+		#	acc_user=email.split('@')[0]
+			user=authenticate(username=post_u,password=post_p)              #take first part from email as username
 			if user is not None:
 				if user.is_active:
 					login(request,user)
@@ -66,10 +66,10 @@ def acc_login(request):
 					errors.append('Account disabled')
 			else:
 				errors.append('Invaild user')
-		return render(request,'login.html',{'errors':errors})       #render will avoid csrf error
+		return render(request,'logina.html',{'errors':errors})       #render will avoid csrf error
 	else:		
-		return render(request,'login.html')
+		return render(request,'logina.html')
 
 def acc_logout(request):
 	logout(request)
-	return HttpResponseRedirect('/')
+	return HttpResponseRedirect(reverse('my_django:login'))

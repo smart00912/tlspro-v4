@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+{% load staticfiles %}
+  <head>
+    <meta charset="UTF-8">
+
+
+    <title>Calm breeze login screen</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="/jintai/css/style.css">
+  
+      
+    
+    
+  </head>
+
+  <body>
+  
+    <div class="wrapper">
+	<div class="container">
+		<h1>Welcome</h1>
+		
+		<form class="form" method="post" action="{% url 'my_django:login'  %}">
+            {% csrf_token %}
+			<input type="text" placeholder="Username" name="u">
+			<input type="password" placeholder="Password" name="p">
+			<button type="submit" id="login-button">Login</button>
+		</form>
+	</div>
+	
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+  
+
+    
+    
+    
+  </body>
+</html>

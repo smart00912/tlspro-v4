@@ -85,7 +85,7 @@ DATABASES = {
         'NAME':  'django',
         'USER':'root',
         'PASSWORD':'Htbenet@009',
-        'HOST':'localhost',
+        'HOST':'10.10.6.147',
         'PORT':3306
     }
 }
@@ -158,3 +158,31 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
+
+########################ldap auth settings#####################
+import ldap
+from django_auth_ldap.config import LDAPSearch
+
+
+# Baseline configuration.
+AUTH_LDAP_SERVER_URI = "ldap://10.10.30.146"
+
+AUTH_LDAP_BIND_DN = "CN=sysadmin,OU=Admin,OU=IT,DC=etocrm,DC=net"
+AUTH_LDAP_BIND_PASSWORD = "etocrmQSKJ021"
+AUTH_LDAP_USER_SEARCH = LDAPSearch("OU=Admin,OU=IT,DC=etocrm,DC=net",
+ldap.SCOPE_SUBTREE, "(sAMAccountName=%(user)s)")
+
+
+# Populate the Django user from the LDAP directory.
+AUTH_LDAP_USER_ATTR_MAP = {
+"first_name":  "givenName",
+"last_name": "sn",
+"email": "mail"
+}
+
+# Keep ModelBackend around for per-user permissions and maybe a local
+# superuser.
+AUTHENTICATION_BACKENDS = (
+'django_auth_ldap.backend.LDAPBackend',
+'django.contrib.auth.backends.ModelBackend',
+)

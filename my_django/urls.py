@@ -16,3 +16,7 @@ urlpatterns = [
 	url(r'^$', views.acc_login,name='login'),
 	url(r'^logout/$', views.acc_logout,name='logout'),
 ]
+
+#link check        
+# http://blog.csdn.net/feng88724/article/details/7262514
+# http://blog.csdn.net/wcc526/article/details/14458641
