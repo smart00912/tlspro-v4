@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>OpenVpn</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="/jintai/alt-1/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/jintai/alt-1/plugins/datatables/dataTables.bootstrap.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/jintai/alt-1/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/jintai/alt-1/dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.åjs"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="sidebar-mini wysihtml5-supported skin-blue">
+<div class="wrapper">
+
+  <!-- 头部信息 -->
+  <header class="main-header">
+    <!-- Logo -->
+        <a href="{% url 'my_django:dashboard' %}" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>TLS</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><img src="/jintai/ico/logo.png" height="43" width="200"></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <!-- 用户设置 -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">                                                                                                                            
+        
+             <li class="dropdown  -align-center">
+                {% if request.user.is_authenticated %}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ request.user }} <span class="caret"></span></a> 
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'my_django:logout' %}">Logout</a></li>
+                </ul>
+              {% else %}
+                  <a href="/">Login</a>
+              {% endif %}
+           </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!--  左侧导航 -->
+<aside class="main-sidebar"></aside>
+
+  <!-- 内容区域 -->
+  <div class="content-wrapper">
+    <!-- 内容标题 -->
+
+    <!-- 内容区 -->
+    <section class="content">
+      {% block content %}  
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div class="box">
+
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Num</th>
+                  <th>File</th>
+                  <th>Date</th>
+                  <th>Operation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>xxxx.ww.a.t1.tar</td>
+                  <td>2016.10.11</td>
+                  <td width="230">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default">Download</button>
+                        <button type="button" class="btn btn-default">Revoke</button>
+                        <button type="button" class="btn btn-default">Enable</button>
+                      </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>xxxx.ww.a.t2.tar</td>
+                  <td>2016.11.15</td>
+                  <td width="230">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-default">Download</button>
+                        <button type="button" class="btn btn-default">Revoke</button>
+                        <button type="button" class="btn btn-default">Enable</button>
+                      </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+       {% endblock content %} 
+    </section>
+    <!-- /.content -->
+  </div>
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.2.3 -->
+<script src="/jintai/alt-1/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="/jintai/alt-1/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="/jintai/alt-1/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/jintai/alt-1/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="/jintai/alt-1/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/jintai/alt-1/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/jintai/alt-1/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/jintai/alt-1/dist/js/demo.js"></script>
+
+<!-- artTemplate -->
+<script src="/jintai/alt-1/dist/js/template.js"></script>
+<script src="/jintai/alt-1/dist/js/base.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+        language: {
+            "sProcessing": "Processing...",
+            "sLengthMenu": "Show _MENU_ Results",
+            "sZeroRecords": "No Results",
+            "sInfo": "Results From _START_ to _END_ ，Totally _TOTAL_ Results",
+            "sInfoEmpty": "Result From 0 to 0，Total 0 Result",
+            "sInfoFiltered": "( _MAX_ )",
+            "sInfoPostFix": "",
+            "sSearch": "Search:",
+            "sUrl": "",
+            "sEmptyTable": "Empty data",
+            "sLoadingRecords": "Loading...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "First",
+                "sPrevious": "Prv",
+                "sNext": "Next",
+                "sLast": "End"
+            },
+            "oAria": {
+                "sSortAscending": ": ASC",
+                "sSortDescending": ": DESC"
+            }
+        }
+    });
+  });
+</script>
+<script id="menutpl" type="text/html">  
+  <section class="sidebar">
+      <ul class="sidebar-menu">
+                [[each menu.dataList as value i]]
+                    [[if value.list.length == 0]]
+                        <li class="[[ menu.active[0]==value.id?active:'' ]]" name="tracking">
+                            <a href="[[value.url]]">
+                                <i class="[[value.icon]]"></i> 
+                                <span>[[value.title]]</span>
+                            </a>
+                        </li>
+                    [[else]]
+                        <li class="treeview [[menu.active[0]==value.id?active='active':active='']]">
+                            <a href="javascript:;" m-click="toggleNav">
+                                <i class="[[value.icon]]"></i> 
+                                <span>[[value.title]]</span>
+                            </a>
+                            <ul class="treeview-menu" style="display:[[if menu.active[0]==value.id]]block[[else]]none[[/if]]">
+                                [[each value.list as l m]]
+                                    <li class="[[(menu.active[0]==value.id && menu.active[1] == l.id)?active:'']]"><a href="[[l.url]]" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> [[l.title]]</a></li>
+                                [[/each]]
+                            </ul>
+                        </li>
+                    [[/if]]   
+                [[/each]]
+            </ul>
+      </section>
+</script>
+<script type="text/javascript">
+  var pageMenu = {"active": [1,12]};
+  var menuData = {
+    'active':[1,11],
+    'dataList':[
+                {
+                  'id':1,
+                  'title':'Logs',
+                  'icon':'fa fa-cubes',
+                  'url':'',
+                  'list':[{
+                              'id':11,
+                              'title':'User Log',
+                              'url':"{% url 'my_django:userlog' %}"
+                          },{
+                              'id':12,
+                              'title':'System Log',
+                              'url':"{% url 'my_django:syslog' %}"
+                          }]
+                  },{
+                  'id':2,
+                  'title':'Settings',
+                  'icon':'fa fa-cogs',
+                  'url':'',
+                  'list':[{
+                              'id':21,
+                              'title':'s1',
+                              'url':'../generate/data.html'
+                          },{
+                              'id':22,
+                              'title':'s2',
+                              'url':'../generate/data.html'
+                          }]
+                  },{
+                  'id':3,
+                  'title':'Admin',
+                  'icon':'fa fa-key',
+                  'url':'',
+                  'list':[{
+                              'id':11,
+                              'title':'key setting',
+                              'url':'../examples/login.html'
+                          },{
+                              'id':12,
+                              'title':'a2',
+                              'url':'../examples/register.html'
+                          }]
+                  }]
+        }
+        createMenu(menuData);
+</script>
+
+</body>
+</html>

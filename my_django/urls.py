@@ -13,6 +13,8 @@ urlpatterns = [
 	url(r'^host/$',views.host,name='host'),
 	url(r'^audit/$',views.audit,name='audit'),
 	url(r'^user/$',views.user,name='user'),
+    url(r'^syslog/$',views.syslog,name='syslog'),
+	url(r'^userlog/$',views.userlog,name='userlog'),
 	url(r'^$', views.acc_login,name='login'),
 	url(r'^logout/$', views.acc_logout,name='logout'),
 ]

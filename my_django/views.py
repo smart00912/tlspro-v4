@@ -22,7 +22,7 @@ def index(q):
 
 @login_required(login_url="/yunwei/",redirect_field_name='login')
 def bootstrap(q):
-	return render(q,'bootstrap.html',{'debug':False})
+	return render(q,'dashboard.html',{'debug':False})
 
 @login_required(login_url="/yunwei/",redirect_field_name='login')
 def asset(q):
@@ -40,6 +40,13 @@ def audit(q):
 @login_required(login_url='/yunwei/',redirect_field_name='login',)
 def user(q):
 	return render(q, 'host.html',{'debug':False})
+
+@login_required(login_url='/yunwei/',redirect_field_name='login',)
+def syslog(q):
+	return render(q, 'logs/system.html',{'debug':False})
+@login_required(login_url='/yunwei/',redirect_field_name='login',)
+def userlog(q):
+	return render(q, 'logs/user.html',{'debug':False})
 
 
 def acc_login(request):
@@ -66,9 +73,9 @@ def acc_login(request):
 					errors.append('Account disabled')
 			else:
 				errors.append('Invaild user')
-		return render(request,'logina.html',{'errors':errors})       #render will avoid csrf error
+		return render(request,'loginb.html',{'errors':errors})       #render will avoid csrf error
 	else:		
-		return render(request,'logina.html')
+		return render(request,'loginb.html')
 
 def acc_logout(request):
 	logout(request)

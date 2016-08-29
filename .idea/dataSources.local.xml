@@ -4,8 +4,6 @@
     <data-source name="MySQL - django@10.10.6.147" uuid="926ef92a-caac-4727-be29-4202c0c9164e">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>django.*</schema-pattern>
-      <default-schemas>django.*</default-schemas>
     </data-source>
   </component>
 </project>
