@@ -47,6 +47,9 @@ def syslog(q):
 @login_required(login_url='/yunwei/',redirect_field_name='login',)
 def userlog(q):
 	return render(q, 'logs/user.html',{'debug':False})
+@login_required(login_url='/yunwei/',redirect_field_name='login',)
+def adm(q):
+	return render(q, 'admin/adm.html',{'debug':False})
 
 
 def acc_login(request):
