@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from my_django.models import Upload
 from django import forms
+from tables import keytable
 
 
 # Create your views here.
