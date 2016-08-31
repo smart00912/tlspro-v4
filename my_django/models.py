@@ -21,11 +21,10 @@ class Host(models.Model):
 	groups=models.ManyToManyField('HostGroup')
 	enabled =models.BooleanField(default=True)
 	online_date=models.DateField()
-	create_date=models.DateTimeField(auto_now_add=True)
-	
-	
+	create_date=models.DateTimeField(auto_now_add=True)	
 	def __unicode__(self):
 		return self.hostname
+	
 	
 class IDC(models.Model):
 	name=models.CharField(max_length=64,unique=True)
@@ -46,8 +45,15 @@ class UserProfile(models.Model):
 	def __unicode__(self):
 		return self.name
 	
-	
 
+class Upload(models.Model):
+    username = models.CharField(max_length = 30,default='Unknow')
+    phrase = models.CharField(max_length = 80,default='xxxxxxxxxx')
+    headImg = models.FileField(upload_to = './upload/')
+    create_date=models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.username
 
 '''
 CURD操作有两种方法：

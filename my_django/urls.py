@@ -15,6 +15,7 @@ urlpatterns = [
 	url(r'^user/$',views.user,name='user'),
     url(r'^syslog/$',views.syslog,name='syslog'),
 	url(r'^userlog/$',views.userlog,name='userlog'),
+	url(r'^upload/$',views.upload,name='upload'),
 	url(r'^adm/$',views.adm,name='adm'),
 	url(r'^$', views.acc_login,name='login'),
 	url(r'^logout/$', views.acc_logout,name='logout'),

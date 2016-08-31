@@ -4,6 +4,9 @@ from django.http import HttpResponseRedirect
 from django.template import Context
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from my_django.models import Upload
+from django import forms
+
 
 # Create your views here.
 
@@ -51,6 +54,19 @@ def userlog(q):
 def adm(q):
 	return render(q, 'admin/adm.html',{'debug':False})
 
+
+@login_required(login_url='/yunwei/',redirect_field_name='login',)
+def upload(request):
+	if request.method=='POST':
+		f=request.FILES.get('uploadfile')
+		pa=request.POST.get('phrase')
+		filename='/'.join(('d:/upload',f.name))
+		with open(filename,'a+') as keys:
+			for chunk in f.chunks():
+				keys.write(chunk)
+		uf=Upload(username=request.user,headImg=filename,phrase=pa)
+		uf.save()
+		return render(request,'admin/adm.html',{'result':'ok'})
 
 def acc_login(request):
 	errors=[]

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'my_django',
     'debug_toolbar',
     'debugtools',
+    'table',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -80,13 +81,9 @@ WSGI_APPLICATION = 'untitled1.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'django',
-        'USER':'root',
-        'PASSWORD':'Htbenet@009',
-        'HOST':'10.10.6.147',
-        'PORT':3306
+   'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'django',
     }
 }
 
