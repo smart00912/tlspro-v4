@@ -2,19 +2,14 @@
 {% block content %}
 <form method="post" enctype="multipart/form-data" action="{% url 'my_django:upload'  %}">
  {% csrf_token %}
-    Key-file: <input type="file" name="uploadfile" /></br>
-    pass:    <input type="password" name="phrase" />
-    </br>
-	<input type="submit" value="go" />
+    <label>file</label>: <input type="file" name="uploadfile" />   <label>pass</label>:<input type="password" name="phrase" />  <input type="submit" value="go" />
 </form>
 <label style="color: #ff9232">{{ result }}</label><br>
-    
-<hr>
+  <hr>
+      
 <div class="row">
         <div class="col-xs-12">
-
           <div class="box">
-
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -26,16 +21,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Sean.li</td>
-                  <td>xxxx.ww.a.t1.tar</td>
-                  <td>2016.10.11</td>
+                {% for it in ud %}
+                <tr>                 
+                  <td>{{ it.username }}</td>
+                  <td>{{ it.headImg }}</td>
+                  <td>{{ it.create_date }}</td>
                 </tr>
-                <tr>
-                  <td>doudou</td>
-                  <td>xxxx.ww.a.t2.tar</td>
-                  <td>2016.11.15</td>
-                </tr>
+                {% endfor %}
                 </tbody>
               </table>
             </div>

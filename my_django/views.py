@@ -5,8 +5,8 @@ from django.template import Context
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from my_django.models import Upload
-from django import forms
-from tables import keytable
+from time import strftime,gmtime
+
 
 
 # Create your views here.
@@ -53,7 +53,8 @@ def userlog(q):
 	return render(q, 'logs/user.html',{'debug':False})
 @login_required(login_url='/yunwei/',redirect_field_name='login',)
 def adm(q):
-	return render(q, 'admin/adm.html',{'debug':False})
+	ud = Upload.objects.all()
+	return render(q, 'admin/adm.html',{'debug':False,'ud':ud})
 
 
 @login_required(login_url='/yunwei/',redirect_field_name='login',)
@@ -61,13 +62,14 @@ def upload(request):
 	if request.method=='POST':
 		f=request.FILES.get('uploadfile')
 		pa=request.POST.get('phrase')
-		filename='/'.join(('d:/upload',f.name))
+		filename='/'.join(('/home/sean/upload',f.name+strftime("%Y-%m-%d-%H:%M:%S", gmtime())))
 		with open(filename,'a+') as keys:
 			for chunk in f.chunks():
 				keys.write(chunk)
 		uf=Upload(username=request.user,headImg=filename,phrase=pa)
 		uf.save()
-		return render(request,'admin/adm.html',{'result':'ok'})
+		ud = Upload.objects.all()
+		return render(request,'admin/adm.html',{'result':'ok','ud':ud})
 
 def acc_login(request):
 	errors=[]
@@ -88,6 +90,7 @@ def acc_login(request):
 			if user is not None:
 				if user.is_active:
 					login(request,user)
+					ud = Upload.objects.all()
 					return HttpResponseRedirect(reverse('my_django:dashboard'))
 				else:
 					errors.append('Account disabled')

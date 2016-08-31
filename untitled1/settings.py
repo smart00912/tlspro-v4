@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'my_django',
     'debug_toolbar',
     'debugtools',
-    'table',
 ]
 
 MIDDLEWARE_CLASSES = [
