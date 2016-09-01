@@ -5,7 +5,8 @@ from django.template import Context
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from my_django.models import Upload
-from time import strftime,gmtime
+import time
+import datetime
 
 
 
@@ -62,7 +63,7 @@ def upload(request):
 	if request.method=='POST':
 		f=request.FILES.get('uploadfile')
 		pa=request.POST.get('phrase')
-		filename='/'.join(('/home/sean/upload',f.name+strftime("%Y-%m-%d-%H:%M:%S", gmtime())))
+		filename='/'.join(('d:/upload',f.name+str(int(time.time()))))
 		with open(filename,'a+') as keys:
 			for chunk in f.chunks():
 				keys.write(chunk)

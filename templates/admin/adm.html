@@ -1,9 +1,33 @@
 {% extends 'dashboard.html' %}
 {% block content %}
-<form method="post" enctype="multipart/form-data" action="{% url 'my_django:upload'  %}">
- {% csrf_token %}
-    <label>file</label>: <input type="file" name="uploadfile" />   <label>pass</label>:<input type="password" name="phrase" />  <input type="submit" value="go" />
-</form>
+<div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">PGP pass</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" enctype="multipart/form-data" action="{% url 'my_django:upload'  %}">
+                 {% csrf_token %}
+              <div class="box-body">
+			  <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <input id="exampleInputFile" type="file" name="uploadfile">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Key pass</label>
+                  <input class="form-control" id="exampleInputPassword1" placeholder="Password" type="password" name="phrase">
+                </div>                
+                <div class="checkbox">
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+    <hr>
 <label style="color: #ff9232">{{ result }}</label><br>
   <hr>
       
