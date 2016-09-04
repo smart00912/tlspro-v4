@@ -17,6 +17,7 @@ urlpatterns = [
 	url(r'^userlog/$',views.userlog,name='userlog'),
 	url(r'^upload/$',views.upload,name='upload'),
 	url(r'^adm/$',views.adm,name='adm'),
+	url(r'^tpl/$',views.tpl,name='tpl'),
 	url(r'^$', views.acc_login,name='login'),
 	url(r'^logout/$', views.acc_logout,name='logout'),
 ]

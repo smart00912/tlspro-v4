@@ -53,6 +53,9 @@ def syslog(q):
 def userlog(q):
 	return render(q, 'logs/user.html',{'debug':False})
 @login_required(login_url='/yunwei/',redirect_field_name='login',)
+def tpl(q):
+	return render(q, 'settings/tpl.html',{'debug':False})
+@login_required(login_url='/yunwei/',redirect_field_name='login',)
 def adm(q):
 	ud = Upload.objects.all()
 	return render(q, 'admin/adm.html',{'debug':False,'ud':ud})
